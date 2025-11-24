@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>VK Feed JSON</h1>
+<pre id="json"></pre>
+
+<script>
+fetch('posts.json')
+  .then(res => res.json())
+  .then(data => document.getElementById('json').textContent = JSON.stringify(data, null, 2));
+</script>
+</body>
+</html>
