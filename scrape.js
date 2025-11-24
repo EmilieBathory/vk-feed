@@ -2,12 +2,11 @@ const puppeteer = require('puppeteer');
 const fs = require('fs');
 
 (async () => {
-  const browser = await puppeteer.launch({ headless: true });
+  const browser = await puppeteer.launch({ headless: true, args: ['--no-sandbox'] });
   const page = await browser.newPage();
 
   await page.goto('https://vk.com/rh_production', { waitUntil: 'networkidle2' });
 
-  // Собираем посты
   const posts = await page.evaluate(() => {
     const nodes = document.querySelectorAll('.wall_post_text');
     const result = [];
